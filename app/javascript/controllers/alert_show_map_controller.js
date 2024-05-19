@@ -10,7 +10,7 @@ export default class extends Controller {
     console.log(this.markerValue)
     mapboxgl.accessToken = this.apiKeyValue;
 
-    this.alert_show_map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
     });
@@ -24,12 +24,12 @@ export default class extends Controller {
     let mark = this.markerValue;
     mark = new mapboxgl.Marker({color: '#FF4A4A'})
       .setLngLat([mark.lng, mark.lat])
-      .addTo(this.alert_show_map);
+      .addTo(this.map);
   }
 
   #fitMapToMarker() {
     let mark = this.markerValue;
-    this.alert_show_map.jumpTo({
+    this.map.jumpTo({
       center: [mark.lng, mark.lat],
       zoom: 16,
     });
